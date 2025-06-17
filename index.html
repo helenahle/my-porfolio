@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helena H Le - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 2rem;
+        }
+
+        .hero h1, .hero p {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 1rem auto;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            border-radius: 10px;
+            padding: 60px 40px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: white;
+            border-radius: 10px;
+            padding: 60px 40px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: white;
+            border-radius: 10px;
+            padding: 60px 40px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: -7.5px;
+            background-color: #667eea;
+            border-radius: 50%;
+            top: 20px;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -7.5px;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content h4 {
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-content li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-content li::before {
+            content: '▸';
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Education Section */
+        .education {
+            background: white;
+            border-radius: 10px;
+            padding: 60px 40px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .education-item h4 {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+        }
+
+        .education-item .year {
+            color: #888;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-item {
+            background: white;
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 1rem;
+            }
+
+            .about, .skills, .experience, .education {
+                padding: 40px 20px;
+            }
+
+            /* Timeline responsive */
+            .timeline::after {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 12.5px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Helena H Le</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hi! I'm Helena H Le, an experienced Clinical Laboratory Director with over 20 years in healthcare leadership, now transitioning into data science and analytics to drive innovation through data-driven insights.</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>
+                I am an experienced operations director with over 20 years of expertise in healthcare operations, 
+                team development, and quality assurance. Throughout my career, I have specialized in process improvement, 
+                regulatory compliance, and leading high-performing laboratory teams across multiple healthcare organizations. 
+                Recently, I completed comprehensive training in Data Science and Analytics, combining my extensive healthcare 
+                leadership experience with cutting-edge analytical skills. This unique blend of clinical expertise and data 
+                science capabilities positions me to drive innovation in healthcare through data-driven decision making, 
+                predictive modeling, and operational excellence. I am passionate about leveraging technology and analytics 
+                to improve patient outcomes and optimize business operations.
+            </p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2025</div>
+                    <div class="timeline-content">
+                        <h3>Director of Lab and Pathology</h3>
+                        <h4>PIH Healthcare</h4>
+                        <ul>
+                            <li>Managed overall laboratory operations and administration</li>
+                            <li>Ensured regulatory compliance and quality management</li>
+                            <li>Developed audit processes for inspection readiness</li>
+                            <li>Led cross-functional teams to optimize laboratory efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2022</div>
+                    <div class="timeline-content">
+                        <h3>Interim Lab Manager</h3>
+                        <h4>BioCorp Lab</h4>
+                        <ul>
+                            <li>Directed laboratory operations in pathology and microbiology</li>
+                            <li>Monitored lab processes for quality assurance</li>
+                            <li>Implemented process improvements during transition period</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2021</div>
+                    <div class="timeline-content">
+                        <h3>Clinical Lab Manager/QA Manager</h3>
+                        <h4>SDI Laboratories</h4>
+                        <ul>
+                            <li>Oversaw high-throughput testing laboratory operations</li>
+                            <li>Ensured compliance with regulatory standards</li>
+                            <li>Optimized workflows for maximum efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2012 - 2020</div>
+                    <div class="timeline-content">
+                        <h3>Clinical Lab Manager/QA Manager</h3>
+                        <h4>Lotus Laboratories</h4>
+                        <ul>
+                            <li>Managed daily operations in Chemistry, Hematology, and Toxicology</li>
+                            <li>Promoted teamwork and communication among staff</li>
+                            <li>Maintained high standards of quality control</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2005 - 2012</div>
+                    <div class="timeline-content">
+                        <h3>Clinical Laboratory Chemistry Supervisor</h3>
+                        <h4>Saint Vincent Hospital</h4>
+                        <ul>
+                            <li>Supervised Chemistry department operations</li>
+                            <li>Ensured regulatory compliance and staff competency</li>
+                            <li>Implemented quality improvement initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1997 - 2005</div>
+                    <div class="timeline-content">
+                        <h3>Medical Technologist</h3>
+                        <h4>Various Healthcare Institutions</h4>
+                        <ul>
+                            <li>Conducted testing across multiple laboratory departments</li>
+                            <li>Maintained quality control and operational efficiency</li>
+                            <li>Developed expertise in clinical laboratory practices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education">
+            <h2>Education & Certifications</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <div class="education-icon">🎓</div>
+                    <h3>MBA in Business Analytics</h3>
+                    <h4>Florida Atlantic University</h4>
+                    <p class="year">2025</p>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-icon">🎓</div>
+                    <h3>Bachelor of Science in Medical Technology</h3>
+                    <h4>Florida Atlantic University</h4>
+                    <p class="year">1996</p>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-icon">📜</div>
+                    <h3>Business Accounting Certification</h3>
+                    <h4>UCLA</h4>
+                    <p class="year">2007</p>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-icon">🏥</div>
+                    <h3>California Clinical Lab Scientist</h3>
+                    <h4>State License</h4>
+                    <p class="year">Active</p>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-icon">🔬</div>
+                    <h3>MT ASCP Certification</h3>
+                    <h4>American Society for Clinical Pathology</h4>
+                    <p class="year">Certified</p>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-icon">📊</div>
+                    <h3>Data Science and Analytics Training</h3>
+                    <h4>Recent Completion</h4>
+                    <p class="year">2025</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Leadership & Management</h3>
+                    <div class="skill-item">Team Development</div>
+                    <div class="skill-item">Process Improvement</div>
+                    <div class="skill-item">Quality Assurance & Control</div>
+                    <div class="skill-item">Regulatory Compliance</div>
+                    <div class="skill-item">Operations Management</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Science & Analytics</h3>
+                    <div class="skill-item">Python Programming</div>
+                    <div class="skill-item">SQL Database Management</div>
+                    <div class="skill-item">Predictive Modeling</div>
+                    <div class="skill-item">Statistical Analysis</div>
+                    <div class="skill-item">Machine Learning</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Visualization</h3>
+                    <div class="skill-item">Power BI</div>
+                    <div class="skill-item">Seaborn</div>
+                    <div class="skill-item">Matplotlib</div>
+                    <div class="skill-item">Tableau</div>
+                    <div class="skill-item">Dashboard Development</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Healthcare & Laboratory</h3>
+                    <div class="skill-item">Clinical Laboratory Operations</div>
+                    <div class="skill-item">Pathology & Microbiology</div>
+                    <div class="skill-item">Chemistry & Hematology</div>
+                    <div class="skill-item">Quality Control Systems</div>
+                    <div class="skill-item">Healthcare Compliance</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Business & Finance</h3>
+                    <div class="skill-item">Business Analytics</div>
+                    <div class="skill-item">Financial Analysis</div>
+                    <div class="skill-item">Process Optimization</div>
+                    <div class="skill-item">Strategic Planning</div>
+                    <div class="skill-item">Performance Metrics</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Technical Tools</h3>
+                    <div class="skill-item">Laboratory Information Systems</div>
+                    <div class="skill-item">Data Analysis Tools</div>
+                    <div class="skill-item">Regulatory Documentation</div>
+                    <div class="skill-item">Audit Management</div>
+                    <div class="skill-item">Training & Development</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
